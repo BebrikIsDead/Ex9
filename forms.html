@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>forms</title>
+	<style type="text/css">
+		p.title{
+			font-size: 50px;
+			background-color: darkblue;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+<script>
+  function solveQuadratic() {
+  // Отримуємо значення a, b, c з форми
+  const a = parseFloat(document.getElementById("a").value);
+  const b = parseFloat(document.getElementById("b").value);
+  const c = parseFloat(document.getElementById("c").value);
+
+  // Розв'язуємо квадратне рівняння
+  const discriminant = b * b - 4 * a * c;
+  let x1, x2;
+  if (discriminant >= 0) {
+    x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+    x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+  }
+
+  // Записуємо результат до елементу з id="result"
+  const resultElement = document.getElementById("result");
+  if (discriminant < 0) {
+    resultElement.innerHTML = "Рівняння не має дійсних коренів";
+  } else if (discriminant === 0) {
+    resultElement.innerHTML = "Рівняння має один дійсний корінь: x = " + x1;
+  } else {
+    resultElement.innerHTML = "Рівняння має два дійсних корені: x1 = " + x1 + ", x2 = " + x2;
+  }
+}
+</script>
+<p class="title">Вивчаю форми</p>
+<form>
+  <label for="a">a:</label>
+  <input type="number" id="a" name="a" value="1"><br><br>
+  
+  <label for="b">b:</label>
+  <input type="number" id="b" name="b" value="2"><br><br>
+  
+  <label for="c">c:</label>
+  <input type="number" id="c" name="c" value="-3"><br><br>
+
+  <button type="button" onclick="solveQuadratic()">Розв'язати</button>
+  <input type="reset" name="reset" value="Скинути">
+</form>
+Рішення: <span id="result">Введіть коефіцієнти та натисніть "Розрахувати"</span>
+<form>
+	<br /><br />
+	Вкажіть вашу стать: <br />
+	<input type="radio" name="gender" value="m">чоловіча
+	<input type="radio" name="gender" value="f">жіноча<br /><br />
+	Вкажіть ваше і'мя <br />
+	<input type="text" name="text1" size="20" maxlength="50" value=""><br /><br />
+	Ви виграли лотерею! Вкажіть ваш номер телефону, щоб забрати приз!<br />
+	<input type="text" name="text2" size="20" maxlength="50" value="                   :P" disabled><br />
+	<br />
+	<input type="text" name="text3" size="20" maxlength="50" value="Приз вже забрали..." readonly><br /><br />
+	Я?<br />
+	<input type="checkbox" name="fapah" value="1">красивий(ва)
+	<input type="checkbox" name="hapaf" value="2">розумний(на)
+	<input type="checkbox" name="jokerge" value="3">крутий(та)
+	<input type="checkbox" name="amok" value="4">класний(на)
+	<input type="checkbox" name="eg" value="5">смішний(на)
+	<br /><br />
+	<input type="submit" value="підтвердити">
+	<input type="reset" value="очистити">
+</form>
+</body>
+</html>
